@@ -1,5 +1,6 @@
 {
-  "homepage": ".",
+  "homepage": "http://moodmate-react-site.s3-website-us-east-1.amazonaws.com",
+
   "name": "emoji-mood-tracker",
   "version": "0.1.0",
   "private": true,
