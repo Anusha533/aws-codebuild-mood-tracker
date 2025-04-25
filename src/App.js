@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div className={`App ${bgClass}`}>
-      <h1>🧠 MoodMate</h1>
+      <h1>🧠 MoodMate By Anusha</h1>
       <p>How are you feeling right now?</p>
       <div className="emoji-container">
         {Object.keys(moodData).map((emoji) => (
