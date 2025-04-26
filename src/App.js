@@ -43,7 +43,7 @@ function App() {
 
   return (
     <div className={`App ${bgClass}`}>
-      <h1>🌟 VibeVerse 🌟</h1>
+      <h1>🌟🌈 VibeVerse 🌈🌟</h1>
       <p>Tell us how you feel right now!</p>
       <div className="phrase-container">
         {Object.keys(phraseToMood).map((phrase) => (
