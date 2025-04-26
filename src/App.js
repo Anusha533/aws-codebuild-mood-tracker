@@ -12,11 +12,11 @@ const moodData = {
 
 const phraseToMood = {
   "I'm very happy today": "Happy",
-  "I'm feeling loved": "Love",
-  "I'm feeling sad": "Sad",
-  "I'm angry": "Angry",
-  "I'm super excited!": "Excited",
-  "I'm tired": "Tired",
+  "I'm feeling adored": "Love",
+  "I'm feeling upset": "Sad",
+  "I'm getting annoyed": "Angry",
+  "I'm over the moon": "Excited",
+  "I'm feel so drained": "Tired",
 };
 
 function App() {
