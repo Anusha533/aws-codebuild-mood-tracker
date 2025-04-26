@@ -2,13 +2,21 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 const moodData = {
-  '😄': ["Keep smiling, you're doing great!", "Happiness is contagious! 😊", "Shine bright today! 🌟"],
-  '😐': ["It’s okay to be neutral. Take it slow.", "Just breathe. 🧘", "A calm mind is a powerful mind."],
-  '😢': ["You’re not alone. 💖", "Cry it out and reset.", "Better days are coming 🌈"],
-  '😤': ["Channel the energy. You’ve got this!", "Take a deep breath. 🌬️", "Let it out, then let it go."],
-  '😍': ["Love is in the air 💖", "Cherish the feeling!", "Romantic vibes only! 🌹"],
-  '😴': ["Rest is productive 😌", "Nap = Recharge!", "Sweet dreams ahead 💤"],
-  '😎': ["Confidence looks good on you! 😎", "You’re unstoppable 🔥", "Keep slayin’! 💪"],
+  Happy: ["Keep smiling! 😊", "Today is a beautiful day!", "Your happiness lights up the world! 🌟"],
+  Love: ["Love is powerful. 💖", "Spread the love!", "You are loved and cherished! 🌹"],
+  Sad: ["It's okay to feel sad. 💧", "Tough times don’t last. Stay strong. 💪", "Better days are ahead! 🌈"],
+  Angry: ["Take a deep breath. 😤", "It's okay to cool off. 🧊", "Let go of what you can't control."],
+  Excited: ["The world is yours today! 🚀", "Ride the wave of excitement! 🌊", "Go chase your dreams! 🌟"],
+  Tired: ["Rest is important. 💤", "Recharge and come back stronger!", "Take it easy today. 🌙"],
+};
+
+const phraseToMood = {
+  "I'm very happy today": "Happy",
+  "I'm feeling loved": "Love",
+  "I'm feeling sad": "Sad",
+  "I'm angry": "Angry",
+  "I'm super excited!": "Excited",
+  "I'm tired": "Tired",
 };
 
 function App() {
@@ -24,33 +32,34 @@ function App() {
     else setBgClass('night');
   }, []);
 
-  const selectMood = (emoji) => {
-    const quotes = moodData[emoji];
+  const selectPhrase = (phrase) => {
+    const detectedMood = phraseToMood[phrase];
+    const quotes = moodData[detectedMood];
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-    setMood(emoji);
+    setMood(detectedMood);
     setQuote(randomQuote);
-    setHistory(prev => [...prev, { emoji, quote, time: new Date().toLocaleTimeString() }]);
+    setHistory(prev => [...prev, { phrase, mood: detectedMood, quote: randomQuote, time: new Date().toLocaleTimeString() }]);
   };
 
   return (
     <div className={`App ${bgClass}`}>
-      <h1>🧠 MoodMate By Anusha</h1>
-      <p>How are you feeling right now?</p>
-      <div className="emoji-container">
-        {Object.keys(moodData).map((emoji) => (
+      <h1>🌟 VibeVerse 🌟</h1>
+      <p>Tell us how you feel right now!</p>
+      <div className="phrase-container">
+        {Object.keys(phraseToMood).map((phrase) => (
           <button
-            key={emoji}
-            onClick={() => selectMood(emoji)}
-            className={mood === emoji ? 'selected' : ''}
+            key={phrase}
+            onClick={() => selectPhrase(phrase)}
+            className={mood === phraseToMood[phrase] ? 'selected' : ''}
           >
-            {emoji}
+            {phrase}
           </button>
         ))}
       </div>
 
       {mood && (
         <div className="message-box">
-          <h2>Your Mood: {mood}</h2>
+          <h2>Detected Mood: {mood}</h2>
           <p>{quote}</p>
         </div>
       )}
@@ -61,7 +70,7 @@ function App() {
           <ul>
             {history.map((entry, index) => (
               <li key={index}>
-                {entry.time} — {entry.emoji} {entry.quote}
+                {entry.time} — {entry.phrase} ({entry.mood}) ➔ {entry.quote}
               </li>
             ))}
           </ul>
