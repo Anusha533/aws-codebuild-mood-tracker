@@ -1,4 +1,4 @@
-# MoodMate Tracker 😄📊
+# MoodMate Tracker 😄
 
 MoodMate Tracker is a simple yet uplifting web app built with **React.js** that helps users reflect on their emotions. By selecting how you're feeling — like *Happy*, *Sad*, *Angry*, or *Upset* — the app identifies your mood and displays a thoughtful, mood-based quote to inspire or comfort you.
 
